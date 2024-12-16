@@ -1,6 +1,7 @@
 import React, {useState}  from 'react'
 import Table from 'react-bootstrap/Table';
 import './ToDoList.css'
+import Button from 'react-bootstrap/Button';
 
 export default function ToDoList() {
   
@@ -13,13 +14,6 @@ export default function ToDoList() {
         {task: "Finish SoftWare BootCamp", taskdate: "12/24/24", completed: false},
         ])
   
-  
-  
-  
-  
-  
-  
-  
     return (
     <div className='main-table'>
         
@@ -30,6 +24,7 @@ export default function ToDoList() {
           <th>Task</th>
           <th>Date</th>
           <th>Status</th>
+          <th>Update Task</th>
         </tr>
       </thead>
       <tbody>
@@ -40,6 +35,7 @@ export default function ToDoList() {
              <td>{task.task}</td>
              <td>{task.taskdate}</td>
              <td>{task.completed? "Completed" : "Pending"}</td>
+             <td> <Button variant="outline-danger">Delete</Button> </td>
            </tr>
          ))
        }
