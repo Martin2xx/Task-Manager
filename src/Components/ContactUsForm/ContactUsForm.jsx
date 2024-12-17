@@ -5,9 +5,15 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 
 export default function ContactUsForm() {
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Form submitted');
+  }
+
   return (
     <div>
-        <Form>
+        <Form onSubmit={handleSubmit} >
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridEmail">
           <Form.Label>Email</Form.Label>
@@ -53,10 +59,12 @@ export default function ContactUsForm() {
       <Form.Group className="mb-3" id="formGridCheckbox">
         <Form.Check type="checkbox" label="Check me out" />
       </Form.Group>
-
+      
       <Button variant="primary" type="submit">
         Submit
       </Button>
+
+   
     </Form>
     </div>
   )

@@ -44,6 +44,12 @@ export default function ToDoList() {
     </Table>
 
     <Button variant="primary" onClick={() => setTasks([...tasks, {task: "New Task", taskdate: "12/24/24", completed: false}])}>Add Task</Button>
+    <input type="text" name="addtask" placeholder="New Task?"/>
+
+
+
+    
+    
 
 
 

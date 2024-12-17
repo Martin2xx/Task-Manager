@@ -5,7 +5,7 @@ import './HomePage.css'
 export default function HomePage() {
   return (
     <>
-    <div className='main-header' >Task Manager</div>
+    
     <ToDoList />
     </>
   )
