@@ -34,6 +34,12 @@ export default function ToDoList() {
     setNewTaskDate("");
   }
 
+  const handleDeleteTask = (index) => {
+    const updatedTask = tasks.filter((task, i) => i !== index);
+    setTasks(updatedTask);
+    
+  }
+
   return (
     <div className="main-table">
       <Table striped bordered hover variant="dark" className="main-table">
@@ -55,7 +61,7 @@ export default function ToDoList() {
               <td>{task.completed ? "Completed" : "Pending"}</td>
               <td>
                 {" "}
-                <Button variant="outline-danger">Delete</Button>
+                <Button variant="outline-danger" onClick={() => handleDeleteTask(index)} >Delete</Button>
               </td>
             </tr>
           ))}
