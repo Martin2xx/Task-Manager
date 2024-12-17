@@ -4,7 +4,7 @@ import NavBarMenu from './Components/NavBarMenu/NavBarMenu';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from'react-router-dom';
 import HomePage from './Pages/HomePage/HomePage';
-import ContactUsPage from './Pages/ContactUs/ContactUs'
+import ContactUsPage from './Pages/ContactUsPage/ContactUsPage'
 
 function App() {
   return (
