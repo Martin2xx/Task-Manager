@@ -62,8 +62,8 @@ export default function ToDoList() {
         </tbody>
       </Table>
 
-      <Button variant="outline-success">Success</Button>
-      <input type="text" name="addtask" placeholder="New Task?" value={newTask} onChange={handleAddTaskSubmit} />
+      <Button variant="outline-success" onClick={handleAddTaskSubmit} >Success</Button>
+      <input type="text" name="addtask" placeholder="New Task?" value={newTask} onChange={handleAddTask} />
       <input type="date" name="taskdate" value={newTaskDate} onChange={handleAddTaskDate} />
       
 
