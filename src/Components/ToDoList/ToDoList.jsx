@@ -21,7 +21,7 @@ export default function ToDoList() {
 
   const [newTaskDate, setNewTaskDate] = useState([""]);
 
-  const [taskFilter, setTaskFilter] = useState("all")
+  const [taskFilter, setTaskFilter] = useState("all");
 
   const handleAddTask = (e) => {
     setNewTask(e.target.value);
@@ -52,23 +52,38 @@ export default function ToDoList() {
     setTasks(updatedTasksArray);
   };
 
-  const handleFilterTasks = tasks.filter((task) => {
+  const filteredTasks = tasks.filter((task) => {
     if (taskFilter === "completed") return task.completed;
-    if (taskFilter === "incomplete") return!task.completed;
+    if (taskFilter === "incomplete") return !task.completed;
     return true;
-      
   });
 
   return (
     <div className="main-table">
       <div className="button-container">
-        <Button className="complete-button" variant="outline-success" onClick={() => setTaskFilter("completed")} >
-          Completed{" "}
+        <Button
+          variant="light"
+          className="all-button"
+          onClick={() => setTaskFilter("all")}
+        >
+          All Task
         </Button>
-        <Button className="incomplete-button" variant="outline-danger" onClick={() => setTaskFilter("incomplete")} >
+
+        <Button
+          className="complete-button"
+          variant="outline-success"
+          onClick={() => setTaskFilter("completed")}
+        >
+          Completed
+        </Button>
+
+        <Button
+          className="incomplete-button"
+          variant="outline-danger"
+          onClick={() => setTaskFilter("incomplete")}
+        >
           Incomplete
         </Button>
-        <Button variant="light" className="all-button" onClick={() => setTaskFilter("all")} >All Task</Button>
       </div>
 
       <Table striped bordered hover variant="dark" className="main-table">
@@ -82,7 +97,7 @@ export default function ToDoList() {
           </tr>
         </thead>
         <tbody>
-          {tasks.map((task, index) => (
+          {filteredTasks.map((task, index) => (
             <tr key={index}>
               <td>{index + 1}</td>
               <td>{task.task}</td>
@@ -113,7 +128,7 @@ export default function ToDoList() {
         </tbody>
       </Table>
 
-      <div className="addtask-buttons" >
+      <div className="addtask-buttons">
         <Button variant="outline-success" onClick={handleAddTaskSubmit}>
           Add Task
         </Button>
