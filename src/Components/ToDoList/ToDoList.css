@@ -2,12 +2,16 @@
     padding: 10px;
 }
 
-.incomplete-button{
-  display:inline-flexbox;
-  align-items: center;
-  justify-content: center;
-  padding: 5px 10px;
-  margin-left: 20 rem;
+.button-container{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
 
-
+.addtask-buttons{
+    display: flex;
+    justify-content:center;
+    gap: 5px;
+    margin-top: 20px;
 }

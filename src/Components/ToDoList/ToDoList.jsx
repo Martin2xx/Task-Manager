@@ -21,6 +21,8 @@ export default function ToDoList() {
 
   const [newTaskDate, setNewTaskDate] = useState([""]);
 
+  const [taskFilter, setTaskFilter] = useState("all")
+
   const handleAddTask = (e) => {
     setNewTask(e.target.value);
   };
@@ -30,29 +32,43 @@ export default function ToDoList() {
   };
 
   const handleAddTaskSubmit = () => {
-    const newTasksArray = [...tasks, { task: newTask, taskdate: newTaskDate, completed: false }];
+    const newTasksArray = [
+      ...tasks,
+      { task: newTask, taskdate: newTaskDate, completed: false },
+    ];
     setTasks(newTasksArray);
     setNewTask("");
     setNewTaskDate("");
-  }
+  };
 
   const handleDeleteTask = (index) => {
     const updatedTask = tasks.filter((task, i) => i !== index);
     setTasks(updatedTask);
-    
-  }
+  };
 
   const handleUpdateTask = (index, newStatus) => {
-    const updatedTasksArray = [...tasks]
-    updatedTasksArray[index].completed = newStatus
-    setTasks(updatedTasksArray)
-  }
+    const updatedTasksArray = [...tasks];
+    updatedTasksArray[index].completed = newStatus;
+    setTasks(updatedTasksArray);
+  };
+
+  const handleFilterTasks = tasks.filter((task) => {
+    if (taskFilter === "completed") return task.completed;
+    if (taskFilter === "incomplete") return!task.completed;
+    return true;
+      
+  });
 
   return (
     <div className="main-table">
-      <div>
-        <Button  className="complete-button" variant="outline-success">Completed </Button>
-        <Button  className="incomplete-button" variant="outline-danger">Incomplete</Button>
+      <div className="button-container">
+        <Button className="complete-button" variant="outline-success" onClick={() => setTaskFilter("completed")} >
+          Completed{" "}
+        </Button>
+        <Button className="incomplete-button" variant="outline-danger" onClick={() => setTaskFilter("incomplete")} >
+          Incomplete
+        </Button>
+        <Button variant="light" className="all-button" onClick={() => setTaskFilter("all")} >All Task</Button>
       </div>
 
       <Table striped bordered hover variant="dark" className="main-table">
@@ -71,29 +87,50 @@ export default function ToDoList() {
               <td>{index + 1}</td>
               <td>{task.task}</td>
               <td>{task.taskdate}</td>
-              <td><DropdownButton
+              <td>
+                <DropdownButton
                   variant="outline-secondary"
                   title={task.completed ? "Completed" : "Pending"}
-                  onSelect={(status) => handleUpdateTask(index, status === "true")}
+                  onSelect={(status) =>
+                    handleUpdateTask(index, status === "true")
+                  }
                 >
                   <Dropdown.Item eventKey={true}>Completed</Dropdown.Item>
                   <Dropdown.Item eventKey={false}>Incomplete</Dropdown.Item>
-                </DropdownButton></td>
+                </DropdownButton>
+              </td>
               <td>
                 {" "}
-                <Button variant="outline-danger" onClick={() => handleDeleteTask(index)} >Delete</Button>
+                <Button
+                  variant="outline-danger"
+                  onClick={() => handleDeleteTask(index)}
+                >
+                  Delete
+                </Button>
               </td>
             </tr>
           ))}
         </tbody>
       </Table>
 
-      <Button variant="outline-success" onClick={handleAddTaskSubmit} >Add Task</Button>
-      <input type="text" name="addtask" placeholder="New Task?" value={newTask} onChange={handleAddTask} />
-      <input type="date" name="taskdate" value={newTaskDate} onChange={handleAddTaskDate} />
-      
-
-
+      <div className="addtask-buttons" >
+        <Button variant="outline-success" onClick={handleAddTaskSubmit}>
+          Add Task
+        </Button>
+        <input
+          type="text"
+          name="addtask"
+          placeholder="New Task?"
+          value={newTask}
+          onChange={handleAddTask}
+        />
+        <input
+          type="date"
+          name="taskdate"
+          value={newTaskDate}
+          onChange={handleAddTaskDate}
+        />
+      </div>
     </div>
   );
 }
