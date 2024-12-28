@@ -7,7 +7,7 @@ import Row from "react-bootstrap/Row";
 export default function ContactUsForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted");
+    alert("Form Submitted");
   };
 
   return (

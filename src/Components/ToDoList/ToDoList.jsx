@@ -42,6 +42,12 @@ export default function ToDoList() {
     
   }
 
+  const handleUpdateTask = (index, newStatus) => {
+    const updatedTasksArray = [...tasks]
+    updatedTasksArray[index].completed = newStatus
+    setTasks(updatedTasksArray)
+  }
+
   return (
     <div className="main-table">
       <Table striped bordered hover variant="dark" className="main-table">
@@ -60,7 +66,14 @@ export default function ToDoList() {
               <td>{index + 1}</td>
               <td>{task.task}</td>
               <td>{task.taskdate}</td>
-              <td>{task.completed ? "Completed" : "Pending"}</td>
+              <td><DropdownButton
+                  variant="outline-secondary"
+                  title={task.completed ? "Completed" : "Pending"}
+                  onSelect={(status) => handleUpdateTask(index, status === "true")}
+                >
+                  <Dropdown.Item eventKey={true}>Completed</Dropdown.Item>
+                  <Dropdown.Item eventKey={false}>Incomplete</Dropdown.Item>
+                </DropdownButton></td>
               <td>
                 {" "}
                 <Button variant="outline-danger" onClick={() => handleDeleteTask(index)} >Delete</Button>
