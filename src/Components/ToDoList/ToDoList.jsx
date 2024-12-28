@@ -50,6 +50,11 @@ export default function ToDoList() {
 
   return (
     <div className="main-table">
+      <div>
+        <Button  className="complete-button" variant="outline-success">Completed </Button>
+        <Button  className="incomplete-button" variant="outline-danger">Incomplete</Button>
+      </div>
+
       <Table striped bordered hover variant="dark" className="main-table">
         <thead>
           <tr>
