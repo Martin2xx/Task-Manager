@@ -38,4 +38,4 @@ This application was created to help individuals manage their tasks. You are abl
 
 ## Author
 
-Martin Ramirez - [@LinkedIn](www.linkedin.com/in/martin-ramirez-871118334/)
+Martin Ramirez - [@LinkedIn](https://www.linkedin.com/in/martin-ramirez-871118334/)
